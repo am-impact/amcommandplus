@@ -1,0 +1,14 @@
+{
+    "name": "am-impact/amcommandplus",
+    "description": "Additional commands for a&m command that shouldn't be in the core",
+    "authors": [
+        {
+            "name": "Hubert Prein",
+            "email": "h.prein@am-impact.nl"
+        }
+    ],
+    "type": "craft-plugin",
+    "require": {
+        "composer/installers": "~1.0"
+    }
+}
