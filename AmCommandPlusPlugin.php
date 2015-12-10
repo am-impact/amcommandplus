@@ -16,7 +16,7 @@ class AmCommandPlusPlugin extends BasePlugin
 
     public function getVersion()
     {
-        return '1.0';
+        return '1.1.0';
     }
 
     public function getDeveloper()
@@ -35,26 +35,28 @@ class AmCommandPlusPlugin extends BasePlugin
      * @return array
      */
     public function addCommands() {
-        $commands = array(
-            array(
-                'name'    => Craft::t('Globals') . ': ' . Craft::t('Create field in "{globalSetName}"', array('globalSetName' => Craft::t('Number of views'))),
-                'info'    => Craft::t('Quickly create a field in the global set and add it to the field layout.'),
-                'call'    => 'createFieldAction',
-                'service' => 'amCommandPlus_globals',
-                'vars'    => array(
-                    'globalSetName' => Craft::t('Number of views')
+        if (craft()->userSession->isAdmin()) {
+            $commands = array(
+                array(
+                    'name'    => Craft::t('Globals') . ': ' . Craft::t('Create field in "{globalSetName}"', array('globalSetName' => Craft::t('Number of views'))),
+                    'info'    => Craft::t('Quickly create a field in the global set and add it to the field layout.'),
+                    'call'    => 'createFieldAction',
+                    'service' => 'amCommandPlus_globals',
+                    'vars'    => array(
+                        'globalSetName' => Craft::t('Number of views')
+                    )
+                ),
+                array(
+                    'name'    => Craft::t('Globals') . ': ' . Craft::t('Create field in "{globalSetName}"', array('globalSetName' => Craft::t('Entry IDs'))),
+                    'info'    => Craft::t('Quickly create a field in the global set and add it to the field layout.'),
+                    'call'    => 'createFieldAction',
+                    'service' => 'amCommandPlus_globals',
+                    'vars'    => array(
+                        'globalSetName' => Craft::t('Entry IDs')
+                    )
                 )
-            ),
-            array(
-                'name'    => Craft::t('Globals') . ': ' . Craft::t('Create field in "{globalSetName}"', array('globalSetName' => Craft::t('Entry IDs'))),
-                'info'    => Craft::t('Quickly create a field in the global set and add it to the field layout.'),
-                'call'    => 'createFieldAction',
-                'service' => 'amCommandPlus_globals',
-                'vars'    => array(
-                    'globalSetName' => Craft::t('Entry IDs')
-                )
-            )
-        );
-        return $commands;
+            );
+            return $commands;
+        }
     }
 }
